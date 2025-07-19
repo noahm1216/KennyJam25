@@ -15,6 +15,7 @@ public class SimpleCameraEffects : MonoBehaviour
     [Header("Camera References")]
     [SerializeField] private CinemachineVirtualCamera _baseCamera;
     [SerializeField] private CinemachineVirtualCamera _zoomCamera;
+    [SerializeField] private CinemachineVirtualCamera _zoomOutCamera;
     [SerializeField] private CinemachineVirtualCamera _shakeCamera;
 
     [Header("Transition Presets")]
@@ -42,6 +43,13 @@ public class SimpleCameraEffects : MonoBehaviour
     {
         StartCoroutine(ZoomRoutine(duration));
     }
+
+    public void PlayZoomOutEffect(float duration)
+    {
+        StartCoroutine(ZoomOutRoutine(duration));
+    }
+
+
     public void PlayShakeEffect(float duration, float intensity)
     {
         var noise = _shakeCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -71,6 +79,16 @@ public class SimpleCameraEffects : MonoBehaviour
         _zoomCamera.Priority = 0;
     }
 
+    private IEnumerator ZoomOutRoutine(float duration)
+    {
+        _zoomOutCamera.Priority = 20;
+
+        yield return new WaitForSeconds(duration);
+
+        _zoomOutCamera.Priority = 0;
+
+    }
+
     // ===== UTILITIES =====
     public void SetCustomTransition(CinemachineBlendDefinition.Style style, float duration)
     {
@@ -81,6 +99,7 @@ public class SimpleCameraEffects : MonoBehaviour
     {
         _baseCamera.Priority = 10;
         _zoomCamera.Priority = 0;
+        _zoomOutCamera.Priority = 0;
         _shakeCamera.Priority = 0;
     }
 

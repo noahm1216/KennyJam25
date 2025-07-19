@@ -8,11 +8,13 @@ public class CameraEffectTester : MonoBehaviour
     [SerializeField] private Transform _testTarget;
     [SerializeField] private Text _statusText;
     [SerializeField] private float _zoomDuration;
+    [SerializeField] private float _zoomOutDuration;
     [SerializeField] private float _shakeDuration;
     [SerializeField] private float _shakeIntensity;
 
     [Header("Key Bindings")]
     [SerializeField] private KeyCode _zoomKey = KeyCode.Z;
+    [SerializeField] private KeyCode _zoomOutKey = KeyCode.O;
     [SerializeField] private KeyCode _shakeKey = KeyCode.S;
     [SerializeField] private KeyCode _resetKey = KeyCode.R;
     [SerializeField] private KeyCode _nextPresetKey = KeyCode.T;
@@ -28,6 +30,10 @@ public class CameraEffectTester : MonoBehaviour
         if (Input.GetKeyDown(_zoomKey))
         {
             _cameraEffects.PlayZoomEffect(_zoomDuration);
+        }
+        if (Input.GetKeyDown(_zoomOutKey))
+        {
+            _cameraEffects.PlayZoomOutEffect(_zoomOutDuration);
         }
 
         if (Input.GetKeyDown(_shakeKey))
@@ -55,6 +61,7 @@ public class CameraEffectTester : MonoBehaviour
                           $"Current Transition: {_cameraEffects.GetCurrentPresetName()}\n\n" +
                           $"CONTROLS:\n" +
                           $"{_zoomKey} - Zoom Effect\n" +
+                          $"{_zoomOutKey} - Zoom Out Effect\n" +
                           $"{_shakeKey} - Shake Effect\n" +
                           $"{_resetKey} - Reset Camera\n" +
                           $"{_nextPresetKey} - Next Transition Style";
