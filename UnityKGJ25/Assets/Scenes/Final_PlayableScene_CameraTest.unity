@@ -386,21 +386,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
         type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
       propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 614577114}
@@ -409,66 +394,6 @@ PrefabInstance:
       propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 659479335}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ForceReset
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayTimeline
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SimpleCameraEffects, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: TimelineManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Winning Cutscene
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: Winning Cutscene
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
-        type: 3}
-      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1912455709438899270, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
         type: 3}
       propertyPath: playerCamera

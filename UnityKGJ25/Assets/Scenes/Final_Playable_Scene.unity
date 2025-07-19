@@ -182,56 +182,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5797233095077853178, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797233095077853178, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797233095077853178, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797233095077853178, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -247.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797233095077853178, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142852078942463769, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: interactorRules.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142852078942463769, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].onCollision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142852078942463769, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].ruleNickname
-      value: Checkpoint Crash
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142852078942463769, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].interactorEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142852078942463769, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].layersToAffect.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8277803610994677909, guid: 0b6f1a3f88f78f4439ee13247625cff3,
         type: 3}
       propertyPath: m_Name
@@ -244,11 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b6447d89c5b0d234e866aa6f4bc3268c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4282648351876308252, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1781800808}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b6f1a3f88f78f4439ee13247625cff3, type: 3}
 --- !u!1 &410087039
@@ -583,125 +529,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d8ca0d81730ad4aa4001d301415472, type: 3}
---- !u!1001 &1781800807
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2125095104}
-    m_Modifications:
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 62.171143
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -307.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 308.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 360706277993774633, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: interactorRules.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 360706277993774633, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].onCollision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 360706277993774633, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].ruleNickname
-      value: Checkpoint Crash
-      objectReference: {fileID: 0}
-    - target: {fileID: 360706277993774633, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].interactorEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 360706277993774633, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: interactorRules.Array.data[0].layersToAffect.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 679169461811584159, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4b9dc76d0cdc03149a3aa68f23929f65, type: 2}
-    - target: {fileID: 4210098567911860380, guid: 321b162614276eb42bed5a6bceb76150,
-        type: 3}
-      propertyPath: m_Name
-      value: TriggerCapsule - CRASH (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 321b162614276eb42bed5a6bceb76150, type: 3}
---- !u!4 &1781800808 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 21778926496919242, guid: 321b162614276eb42bed5a6bceb76150,
-    type: 3}
-  m_PrefabInstance: {fileID: 1781800807}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2078452784
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,12 +597,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2125095104 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4282648351876308252, guid: 0b6f1a3f88f78f4439ee13247625cff3,
-    type: 3}
-  m_PrefabInstance: {fileID: 31317335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &270434773493645101
 PrefabInstance:
   m_ObjectHideFlags: 0
