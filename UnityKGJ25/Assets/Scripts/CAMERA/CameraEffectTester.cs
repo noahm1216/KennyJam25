@@ -7,9 +7,12 @@ public class CameraEffectTester : MonoBehaviour
     [SerializeField] private SimpleCameraEffects _cameraEffects;
     [SerializeField] private Transform _testTarget;
     [SerializeField] private Text _statusText;
+    [SerializeField] private float _zoomDuration;
+    [SerializeField] private float _shakeDuration;
+    [SerializeField] private float _shakeIntensity;
 
     [Header("Key Bindings")]
-    [SerializeField] private KeyCode _pulseKey = KeyCode.P;
+    [SerializeField] private KeyCode _zoomKey = KeyCode.Z;
     [SerializeField] private KeyCode _shakeKey = KeyCode.S;
     [SerializeField] private KeyCode _resetKey = KeyCode.R;
     [SerializeField] private KeyCode _nextPresetKey = KeyCode.T;
@@ -22,14 +25,14 @@ public class CameraEffectTester : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(_pulseKey))
+        if (Input.GetKeyDown(_zoomKey))
         {
-            _cameraEffects.PlayPulseZoom();
+            _cameraEffects.PlayZoomEffect(_zoomDuration);
         }
 
         if (Input.GetKeyDown(_shakeKey))
         {
-            _cameraEffects.PlayShakeEffect();
+            _cameraEffects.PlayShakeEffect(_shakeDuration, _shakeIntensity);
         }
 
         if (Input.GetKeyDown(_resetKey))
@@ -51,7 +54,7 @@ public class CameraEffectTester : MonoBehaviour
         _statusText.text = $"CAMERA EFFECT TESTER\n" +
                           $"Current Transition: {_cameraEffects.GetCurrentPresetName()}\n\n" +
                           $"CONTROLS:\n" +
-                          $"{_pulseKey} - Pulse Zoom\n" +
+                          $"{_zoomKey} - Zoom Effect\n" +
                           $"{_shakeKey} - Shake Effect\n" +
                           $"{_resetKey} - Reset Camera\n" +
                           $"{_nextPresetKey} - Next Transition Style";

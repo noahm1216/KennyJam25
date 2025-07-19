@@ -25,12 +25,6 @@ public class SimpleCameraEffects : MonoBehaviour
         new TransitionPreset { name = "Smooth", style = CinemachineBlendDefinition.Style.EaseInOut, duration = 1f }
     };
 
-    [Header("Pulse Zoom Settings")]
-    [SerializeField] private float _pulseZoomInSize = 3f;
-    [SerializeField] private float _defaultPulseInDuration = 0.2f;
-    [SerializeField] private float _defaultPulseHold = 0.1f;
-    [SerializeField] private float _defaultPulseOutDuration = 0.4f;
-
     private CinemachineBrain _brain;
     private int _currentPresetIndex = 1;
     private float _originalOrthoSize;
@@ -43,33 +37,12 @@ public class SimpleCameraEffects : MonoBehaviour
     }
 
     // ===== CORE FUNCTIONS =====
-    public void PlayPulseZoom(Transform target = null, float zoomInDuration = -1, float holdDuration = -1, float zoomOutDuration = -1)
+
+    public void PlayZoomEffect(float duration)
     {
-        if (zoomInDuration < 0) zoomInDuration = _defaultPulseInDuration;
-        if (holdDuration < 0) holdDuration = _defaultPulseHold;
-        if (zoomOutDuration < 0) zoomOutDuration = _defaultPulseOutDuration;
-
-        _zoomCamera.Follow = target;
-        _zoomCamera.m_Lens.OrthographicSize = _originalOrthoSize - _pulseZoomInSize;
-
-        // Zoom in
-        SetCustomTransition(CinemachineBlendDefinition.Style.EaseInOut, zoomInDuration);
-        _zoomCamera.Priority = 20;
-
-        // Return to base after delay
-        StartCoroutine(PulseRoutine(zoomInDuration + holdDuration, zoomOutDuration));
+        StartCoroutine(ZoomRoutine(duration));
     }
-
-    private IEnumerator PulseRoutine(float delayBeforeReturn, float zoomOutDuration)
-    {
-        yield return new WaitForSeconds(delayBeforeReturn);
-
-        SetCustomTransition(CinemachineBlendDefinition.Style.EaseInOut, zoomOutDuration);
-        _baseCamera.Priority = 10;
-        _zoomCamera.Priority = 0;
-    }
-
-    public void PlayShakeEffect(float intensity = 1f, float duration = 0.3f)
+    public void PlayShakeEffect(float duration, float intensity)
     {
         var noise = _shakeCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         if (noise == null) return;
@@ -86,6 +59,16 @@ public class SimpleCameraEffects : MonoBehaviour
 
         noise.m_AmplitudeGain = 0;
         _shakeCamera.Priority = 0;
+    }
+
+    private IEnumerator ZoomRoutine(float duration)
+    {
+        
+        _zoomCamera.Priority = 20;
+
+        yield return new WaitForSeconds(duration);
+
+        _zoomCamera.Priority = 0;
     }
 
     // ===== UTILITIES =====
