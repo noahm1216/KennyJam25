@@ -101,7 +101,7 @@ public class ClickAndDrag : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if (hit.point.z > playerObj.transform.position.z) hit.point = new Vector3(hit.point.x,hit.point.y, playerObj.position.z);
+            if (hit.point.z > playerObj.transform.position.z) hit.point = new Vector3(hit.point.x, playerObj.position.y, playerObj.position.z);
             return hit.point;
         }
         //if (pullbackLineRen) pullbackLineRen.enabled = false;
