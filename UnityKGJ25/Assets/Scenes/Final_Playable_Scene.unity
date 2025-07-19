@@ -309,6 +309,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &614577114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4384537750478249339, guid: 71d554d152a74f441b283f2cbe5ba402,
+    type: 3}
+  m_PrefabInstance: {fileID: 270434773493645101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1eb9b58b0b15a84390327d76736829f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &816808416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,6 +329,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614577114}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayZoomEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SimpleCameraEffects, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5314321169871118484, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
+        type: 3}
+      propertyPath: onInteractWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1912455709438899270, guid: b3c85d225ccce8a418cbeefe5e52d5fa,
         type: 3}
       propertyPath: playerCamera

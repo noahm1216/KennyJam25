@@ -30,6 +30,11 @@ public class Interactor : MonoBehaviour
 
     public void ReactForInteraction(CustomInteractorData _interactorData, Transform _obj)
     {
+        InteractorEffector intEffector = null;
+        _obj.TryGetComponent(out intEffector);
+        if (intEffector)
+            intEffector.ReactForInteraction(_interactorData, transform);
+
         switch (_interactorData.interactorEffect)
         {
             case CustomInteractorData.INTERACTOR_EFFECTS.REFLECT:

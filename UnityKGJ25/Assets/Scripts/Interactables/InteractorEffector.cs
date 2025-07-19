@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// <para>
@@ -22,6 +23,8 @@ public class InteractorEffector : MonoBehaviour
     // case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
     private Vector3 positionStart;
     private Quaternion rotationStart;
+
+    public UnityEvent onInteractWin, onInteractCrash;
 
     private void OnEnable()
     {
@@ -46,10 +49,12 @@ public class InteractorEffector : MonoBehaviour
                 print("BOOST OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
+                onInteractCrash?.Invoke();
                 print("CRASH OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
                 print("WIN OBJ");
+                onInteractWin?.Invoke();
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
                 print("LOSE OBJ");
