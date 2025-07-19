@@ -23,6 +23,10 @@ public class InteractorEffector : MonoBehaviour
     // case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
     private Vector3 positionStart;
     private Quaternion rotationStart;
+    // checkpoints
+    private Vector3 positionCheckpoint;
+    private Quaternion rotationCheckpoint;
+
 
     public UnityEvent onInteractWin, onInteractCrash;
 
@@ -65,6 +69,26 @@ public class InteractorEffector : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void StoreCheckpoint(Vector3 _checkpointPos, Quaternion _checkpointRot)
+    {
+        positionCheckpoint = _checkpointPos;
+        rotationCheckpoint = _checkpointRot;
+    }
+
+    public void ClearCheckpoint()
+    {
+        positionCheckpoint = Vector3.zero;
+        rotationCheckpoint = new Quaternion(0, 0, 0, 0);
+    }
+
+    public void MoveToStoredPosition() // move to checkpoint, (if any) or move to start position
+    {
+        if (positionCheckpoint == Vector3.zero)
+        { transform.position = positionStart; transform.rotation = rotationStart; }
+        else
+        { transform.position = positionCheckpoint; transform.rotation = rotationCheckpoint; }
     }
 
 }
