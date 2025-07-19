@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 3297514610866378764}
   - component: {fileID: 4731392091544975861}
   - component: {fileID: 1912455709438899270}
+  - component: {fileID: -5314321169871118484}
   m_Layer: 3
   m_Name: PlayerSphere
   m_TagString: Untagged
@@ -267,6 +268,18 @@ MonoBehaviour:
   timeUntilDeaccelerate: 2.5
   deaccelerationRate: 0.99
   stopVelocity: 0.5
+--- !u!114 &-5314321169871118484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560057895840086098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6ccf9cb7b53cd42861e8610fef3396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2602639311098635210
 GameObject:
   m_ObjectHideFlags: 0

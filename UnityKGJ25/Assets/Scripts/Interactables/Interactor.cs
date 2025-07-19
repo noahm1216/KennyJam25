@@ -47,6 +47,9 @@ public class Interactor : MonoBehaviour
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
                 print("LOSE OBJ");
                 break;
+            case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
+                print("RESET OBJ");
+                break;
             default:
                 break;
         }
@@ -59,7 +62,7 @@ public class Interactor : MonoBehaviour
 [System.Serializable]
 public class CustomInteractorData
 {
-    public enum INTERACTOR_EFFECTS { REFLECT, CRASH, BOOST, WIN, LOSE }
+    public enum INTERACTOR_EFFECTS { REFLECT, CRASH, BOOST, WIN, LOSE, RESET, }
 
     public string ruleNickname;
     public INTERACTOR_EFFECTS interactorEffect;
