@@ -103,6 +103,12 @@ public class SimpleCameraEffects : MonoBehaviour
         _shakeCamera.Priority = 0;
     }
 
+    public void ForceReset()
+    {
+        StopAllCoroutines();
+        ResetAllCameras(); // Sets priorities: Base=10, Others=0
+    }
+
     // ===== PRESET CONTROL =====
     public int GetCurrentPresetIndex() => _currentPresetIndex;
     public string GetCurrentPresetName() => _transitionPresets[_currentPresetIndex].name;
