@@ -12,11 +12,13 @@ public class ClickAndDrag : MonoBehaviour
 
     [Space][Space]
     [Header("CONTROLS\n___________")]
-    public bool LockDragWhileMoving;
+    public bool lockDragWhileMoving;
+    public bool rotateDirectionTossed = true;
 
     [Space][Space]
     [Header("POWER\n___________")]
     public int dragForceBase = 10;
+    public bool limitYVelocity;
     [Range(0, 10)]
     public float timeUntilDeaccelerate = 2.5f;    
     [Range(0,1)]
@@ -29,7 +31,7 @@ public class ClickAndDrag : MonoBehaviour
     private Rigidbody rbody;
     
         
-    void Update() // Update is called once per frame
+    private void Update() // Update is called once per frame
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && canDragObject)
             RaycastMouseIsOverMe();
@@ -42,26 +44,30 @@ public class ClickAndDrag : MonoBehaviour
                 pullbackLineRen.SetPosition(0, playerObj.position);
 
             pullbackLineRen.SetPosition(1, playerObj.position);
-        }
-
-        if (rbody)
-        {
-            if (rbody.velocity.sqrMagnitude < stopVelocity)
-            {
-                rbody.velocity = Vector3.zero;
-                if (LockDragWhileMoving) canDragObject = true;
-            }
-            else
-            {
-                if(Time.time > timeSinceRelease + timeUntilDeaccelerate)
-                rbody.velocity *= deaccelerationRate;
-            }
-
         }       
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
             ReleaseMouseHold();
     }
+
+
+    private void FixedUpdate()
+    {
+        if (rbody)
+        {
+            if (rbody.velocity.sqrMagnitude < stopVelocity)
+            {
+                rbody.velocity = Vector3.zero;
+                if (lockDragWhileMoving) canDragObject = true;
+            }
+            else
+            {
+                if (Time.time > timeSinceRelease + timeUntilDeaccelerate)
+                    rbody.velocity *= deaccelerationRate;
+            }
+        }
+    }
+
 
     public bool RaycastMouseIsOverMe() // check if mouse is on our player object layer
     {
@@ -103,7 +109,7 @@ public class ClickAndDrag : MonoBehaviour
 
     public void ReleaseMouseHold()  //print("release mouse left click");
     {      
-        if (LockDragWhileMoving) canDragObject = false;
+        if (lockDragWhileMoving) canDragObject = false;
         timeSinceRelease = Time.time;
 
         if (draggingFromObject)
@@ -123,9 +129,15 @@ public class ClickAndDrag : MonoBehaviour
             playerObj.TryGetComponent(out rbody);
 
         if (rbody)
-            rbody.AddForce(_direction * dragForceBase - rbody.velocity, ForceMode.VelocityChange);
+        {
+            if (limitYVelocity) _direction.y = 0;
+            rbody.AddForce(_direction * dragForceBase - rbody.velocity, ForceMode.VelocityChange);           
+        }
         else
-            Debug.LogWarning($"Missing Rigidbody on: {playerObj.name}");        
+            Debug.LogWarning($"Missing Rigidbody on: {playerObj.name}");
+
+        if (rotateDirectionTossed)
+            playerObj.transform.rotation = Quaternion.LookRotation(_direction);
     }
 
 

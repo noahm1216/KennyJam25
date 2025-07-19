@@ -13,7 +13,7 @@ public class Interactor : MonoBehaviour
             return;
 
         for (int i = 0; i < interactorRules.Count; i++)
-            if (interactorRules[i].onTrigger && trig.gameObject.layer == interactorRules[i].layersToAffect)
+            if (interactorRules[i].onTrigger && (interactorRules[i].layersToAffect & (1 << trig.gameObject.layer)) != 0)
                 ReactForInteraction(interactorRules[i], trig.transform);
     }
 
@@ -24,7 +24,7 @@ public class Interactor : MonoBehaviour
             return;
 
         for (int i = 0; i < interactorRules.Count; i++)
-            if (interactorRules[i].onCollision && col.gameObject.layer == interactorRules[i].layersToAffect)
+            if (interactorRules[i].onCollision && (interactorRules[i].layersToAffect & (1 << col.gameObject.layer)) != 0)
                 ReactForInteraction(interactorRules[i], col.transform);
     }
 
