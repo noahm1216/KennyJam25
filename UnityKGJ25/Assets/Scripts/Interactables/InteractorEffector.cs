@@ -15,6 +15,7 @@ public class InteractorEffector : MonoBehaviour
     // case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
     public Rigidbody rbody;
     public Animator animPlayer;
+    public float timeToWaitForCheckpointResets = 1;
 
     // case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
 
@@ -30,6 +31,10 @@ public class InteractorEffector : MonoBehaviour
 
     public UnityEvent onInteractWin, onInteractCrash;
 
+    // interaction handler time wait
+    private float lastInteractionStamp;
+    private float interactionWaitTime = 1f;
+
     private void OnEnable()
     {
         positionStart = transform.position;
@@ -44,6 +49,11 @@ public class InteractorEffector : MonoBehaviour
 
     public void ReactForInteraction(CustomInteractorData _interactorData, Transform _objSendingReactor)
     {
+        if (Time.time < lastInteractionStamp + interactionWaitTime)
+            return;
+
+        lastInteractionStamp = Time.time;
+
         switch (_interactorData.interactorEffect)
         {
             case CustomInteractorData.INTERACTOR_EFFECTS.REFLECT:
@@ -52,7 +62,9 @@ public class InteractorEffector : MonoBehaviour
             case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
                 print("BOOST OBJ");
                 break;
-            case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
+            case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:                
+                StoreCheckpoint(_objSendingReactor.position, transform.rotation);
+                StartCoroutine(MoveToStoredPosition(timeToWaitForCheckpointResets));               
                 onInteractCrash?.Invoke();
                 print("CRASH OBJ");
                 break;
@@ -83,8 +95,13 @@ public class InteractorEffector : MonoBehaviour
         rotationCheckpoint = new Quaternion(0, 0, 0, 0);
     }
 
-    public void MoveToStoredPosition() // move to checkpoint, (if any) or move to start position
+    public IEnumerator MoveToStoredPosition(float _timeToWait) // move to checkpoint, (if any) or move to start position
     {
+        print("moveToStoredPos pre-Wait");
+        yield return new WaitForSeconds(_timeToWait);
+        print("moveToStoredPos post-Wait");
+        if (rbody) rbody.velocity = Vector3.zero;
+        
         if (positionCheckpoint == Vector3.zero)
         { transform.position = positionStart; transform.rotation = rotationStart; }
         else
