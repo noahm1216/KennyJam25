@@ -12,9 +12,11 @@ public class InteractorEffector : MonoBehaviour
 {
     //case CustomInteractorData.INTERACTOR_EFFECTS.REFLECT:
     //case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
+    public float boostAmount = 5;
     // case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
     public Rigidbody rbody;
     public Animator animPlayer;
+    public ClickAndDrag ref_clickAndDrag;
 
     // case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
 
@@ -43,6 +45,8 @@ public class InteractorEffector : MonoBehaviour
             TryGetComponent(out rbody);
         if (!animPlayer)
             TryGetComponent(out animPlayer);
+        if (!ref_clickAndDrag)
+            TryGetComponent(out ref_clickAndDrag);
     }
 
 
@@ -61,15 +65,18 @@ public class InteractorEffector : MonoBehaviour
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
                 print("BOOST ON OBJ");
+                if (rbody) rbody.AddForce(transform.forward * boostAmount);// - rbody.velocity, ForceMode.VelocityChange);
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
                 print("CRASH ON OBJ");
                 StoreCheckpoint(_objSendingReactor.position, transform.rotation);
-                onInteractCrash?.Invoke();                
+                if (ref_clickAndDrag) ref_clickAndDrag.DockBoat(true);
+                 onInteractCrash?.Invoke();                
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
                 print("WIN ON OBJ");
                 onInteractWin?.Invoke();
+                if (ref_clickAndDrag) ref_clickAndDrag.ChangeWin(true);
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
                 print("LOSE ON OBJ");

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ClickAndDrag : MonoBehaviour
 {
@@ -28,9 +30,19 @@ public class ClickAndDrag : MonoBehaviour
     private float timeSinceRelease;
     private bool canDragObject = true;
     private bool draggingFromObject;
+    private bool boatIsDocked;
+    private bool weWon;
     private Rigidbody rbody;
-    
-        
+
+    public UnityEvent onLaunchEvent;
+
+    [Space]
+    [Space]
+    [Header("POLISH\n___________")]
+    public Transform playerShip;
+    public Transform sinkingShip;
+
+
     private void Update() // Update is called once per frame
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && canDragObject)
@@ -48,6 +60,9 @@ public class ClickAndDrag : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
             ReleaseMouseHold();
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        { Scene currentScene = SceneManager.GetActiveScene(); SceneManager.LoadScene(currentScene.name); }
     }
 
 
@@ -55,10 +70,17 @@ public class ClickAndDrag : MonoBehaviour
     {
         if (rbody)
         {
-            if (rbody.velocity.sqrMagnitude < stopVelocity)
+            //print($"Velocity {rbody.velocity }");
+            //print($"Megnitude {(int)rbody.velocity.magnitude }");
+            //print($"SqMagnitude {rbody.velocity.sqrMagnitude }");
+
+            if (rbody.velocity.magnitude < stopVelocity && !boatIsDocked && Time.time > timeSinceRelease + timeUntilDeaccelerate)
             {
                 rbody.velocity = Vector3.zero;
                 if (lockDragWhileMoving) canDragObject = true;
+
+                if (!weWon)
+                { print("WE DID NOT MAKE IT... restarting in 3"); StartCoroutine(DelaySceneReload(3.5f)); }
             }
             else
             {
@@ -109,7 +131,9 @@ public class ClickAndDrag : MonoBehaviour
     }
 
     public void ReleaseMouseHold()  //print("release mouse left click");
-    {      
+    {
+        onLaunchEvent?.Invoke();
+
         if (lockDragWhileMoving) canDragObject = false;
         timeSinceRelease = Time.time;
 
@@ -122,6 +146,7 @@ public class ClickAndDrag : MonoBehaviour
                 Debug.LogWarning($"Missing LineRenderer for: {playerObj.name}");
         }
         if (pullbackLineRen) pullbackLineRen.enabled = false;
+        
     }
 
     public void LaunchObject(Vector3 _direction)
@@ -132,7 +157,8 @@ public class ClickAndDrag : MonoBehaviour
         if (rbody)
         {
             if (limitYVelocity) _direction.y = 0;
-            rbody.AddForce(_direction * dragForceBase - rbody.velocity, ForceMode.VelocityChange);           
+            rbody.AddForce(_direction * dragForceBase - rbody.velocity, ForceMode.VelocityChange);
+            DockBoat(false);
         }
         else
             Debug.LogWarning($"Missing Rigidbody on: {playerObj.name}");
@@ -141,5 +167,22 @@ public class ClickAndDrag : MonoBehaviour
             playerObj.transform.rotation = Quaternion.LookRotation(_direction);
     }
 
+    public void DockBoat(bool _dockBoat)
+    {
+        boatIsDocked = _dockBoat;
+    }
 
+    public void ChangeWin(bool _didWin)
+    {
+        weWon = _didWin;
+    }
+
+    public IEnumerator DelaySceneReload(float _timeToWait)
+    {
+        playerShip.gameObject.SetActive(false);
+        sinkingShip.gameObject.SetActive(true);
+        yield return new WaitForSeconds(_timeToWait);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
 }
