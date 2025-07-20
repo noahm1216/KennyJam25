@@ -38,22 +38,22 @@ public class Interactor : MonoBehaviour
         switch (_interactorData.interactorEffect)
         {
             case CustomInteractorData.INTERACTOR_EFFECTS.REFLECT:
-                print("REFLECT OBJ");
+                print("REFLECT TO OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
-                print("BOOST OBJ");
+                print("BOOST TO OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
-                print("CRASH OBJ");
+                print("CRASH TO OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
-                print("WIN OBJ");
+                print("WIN TO OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
-                print("LOSE OBJ");
+                print("LOSE TO OBJ");
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
-                print("RESET OBJ");
+                print("RESET TO OBJ");
                 break;
             default:
                 break;

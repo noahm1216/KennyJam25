@@ -28,7 +28,7 @@ public class InteractorEffector : MonoBehaviour
     private Quaternion rotationCheckpoint;
 
 
-    public UnityEvent onInteractWin, onInteractCrash;
+    public UnityEvent onInteractWin, onInteractCrash, onInteractLose;
 
     // interaction handler time wait
     private float lastInteractionStamp;
@@ -56,25 +56,29 @@ public class InteractorEffector : MonoBehaviour
         switch (_interactorData.interactorEffect)
         {
             case CustomInteractorData.INTERACTOR_EFFECTS.REFLECT:
-                print("REFLECT OBJ");
+                print("REFLECT ON OBJ");
+                transform.position = Vector3.Reflect(transform.position, Vector3.right);
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
-                print("BOOST OBJ");
+                print("BOOST ON OBJ");
                 break;
-            case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:                
+            case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
+                print("CRASH ON OBJ");
                 StoreCheckpoint(_objSendingReactor.position, transform.rotation);
-                onInteractCrash?.Invoke();
-                print("CRASH OBJ");
+                onInteractCrash?.Invoke();                
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
-                print("WIN OBJ");
+                print("WIN ON OBJ");
                 onInteractWin?.Invoke();
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
-                print("LOSE OBJ");
+                print("LOSE ON OBJ");
+                ClearCheckpoint();
+                if (rbody) rbody.velocity = Vector3.zero;
+                onInteractLose?.Invoke();                
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
-                print("RESET OBJ");
+                print("RESET ON OBJ");
                 break;
             default:
                 break;
@@ -94,10 +98,7 @@ public class InteractorEffector : MonoBehaviour
     }
 
     public void TeleportToCheckpoint(float _timeToWait)
-    {
-        if (Time.time < lastInteractionStamp + interactionWaitTime)
-            return;
-
+    {       
         lastInteractionStamp = Time.time;
         StartCoroutine(MoveToStoredPosition(_timeToWait));
     }
