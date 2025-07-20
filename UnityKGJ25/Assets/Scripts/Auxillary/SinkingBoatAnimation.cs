@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class SinkingBoatAnimation : MonoBehaviour
 {
+
     public float sinkSpeed = 1;
     private Vector3 startPosition;
+    public bool resetOnEnable = true, disableOnTimer = true;
     private float enableTimeStamp, enableTimer = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.localPosition;
-        gameObject.SetActive(false);
-        
+        gameObject.SetActive(false);        
     }
 
     private void OnEnable()
     {
-        transform.localPosition = startPosition;
+        if (resetOnEnable) transform.localPosition = startPosition;
         enableTimeStamp = Time.time;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.time > enableTimeStamp + enableTimer)
+        if (Time.time > enableTimeStamp + enableTimer && disableOnTimer)
             gameObject.SetActive(false);
 
-        transform.Translate(Vector3.up * -sinkSpeed * Time.deltaTime, Space.World);
+        if (Time.time < enableTimeStamp + enableTimer)
+            transform.Translate(Vector3.up * -sinkSpeed * Time.deltaTime, Space.World);
     }
 }
