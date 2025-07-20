@@ -30,7 +30,7 @@ public class InteractorEffector : MonoBehaviour
     private Quaternion rotationCheckpoint;
 
 
-    public UnityEvent onInteractWin, onInteractCrash, onInteractLose;
+    public UnityEvent onInteractWin, onInteractCrash, onInteractLose, onBoost;
 
     // interaction handler time wait
     private float lastInteractionStamp;
@@ -65,13 +65,15 @@ public class InteractorEffector : MonoBehaviour
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.BOOST:
                 print("BOOST ON OBJ");
-                if (rbody) rbody.AddForce(transform.forward * boostAmount);// - rbody.velocity, ForceMode.VelocityChange);
+                if (rbody) rbody.AddForce(transform.forward * boostAmount);// - rbody.velocity, ForceMode.VelocityChange);\
+                onBoost?.Invoke();
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.CRASH:
                 print("CRASH ON OBJ");
                 StoreCheckpoint(_objSendingReactor.position, transform.rotation);
                 if (ref_clickAndDrag) ref_clickAndDrag.DockBoat(true);
-                 onInteractCrash?.Invoke();                
+                 onInteractCrash?.Invoke();
+                SimpleCameraEffects.Instance.PlayShakeEffect(3f,5f);
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.WIN:
                 print("WIN ON OBJ");

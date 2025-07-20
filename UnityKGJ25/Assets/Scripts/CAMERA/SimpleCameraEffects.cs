@@ -12,6 +12,8 @@ public struct TransitionPreset
 
 public class SimpleCameraEffects : MonoBehaviour
 {
+    public static SimpleCameraEffects Instance { get; private set; }
+   
     [Header("Camera References")]
     [SerializeField] private CinemachineVirtualCamera _baseCamera;
     [SerializeField] private CinemachineVirtualCamera _zoomCamera;

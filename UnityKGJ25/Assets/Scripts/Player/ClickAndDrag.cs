@@ -165,6 +165,8 @@ public class ClickAndDrag : MonoBehaviour
 
         if (rotateDirectionTossed)
             playerObj.transform.rotation = Quaternion.LookRotation(_direction);
+
+        //SimpleCameraEffects.Instance.PlayShakeEffect(3f,9f);
     }
 
     public void DockBoat(bool _dockBoat)
