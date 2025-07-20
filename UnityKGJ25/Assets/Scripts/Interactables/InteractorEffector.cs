@@ -74,7 +74,7 @@ public class InteractorEffector : MonoBehaviour
             case CustomInteractorData.INTERACTOR_EFFECTS.LOSE:
                 print("LOSE ON OBJ");
                 ClearCheckpoint();
-                if (rbody) rbody.velocity = Vector3.zero;
+                if (rbody) { rbody.velocity = Vector3.zero; rbody.angularVelocity = Vector3.zero; }
                 onInteractLose?.Invoke();                
                 break;
             case CustomInteractorData.INTERACTOR_EFFECTS.RESET:
